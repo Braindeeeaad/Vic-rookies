@@ -54,7 +54,6 @@ public class RookieTeleOp extends LinearOpMode {
                 extakeOn=false;
             }
 
-
             frontLeftMotor.setPower(frontLeftPower);
             backLeftMotor.setPower(backLeftPower);
             frontRightMotor.setPower(frontRightPower);
