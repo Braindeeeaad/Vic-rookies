@@ -21,6 +21,9 @@ public class Intake {
     public void runIntake(){
         intakeMotor.setPower(1.0);
     }
+    public void stop() {
+        intakeMotor.setPower(0);
+    }
     public void runExtake() {
         intakeMotor.setPower(-1.0);
     }
