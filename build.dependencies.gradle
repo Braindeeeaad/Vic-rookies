@@ -24,5 +24,4 @@ dependencies {
     implementation 'org.firstinspires.ftc:Vision:9.0.1'
 
     implementation 'com.acmerobotics.dashboard:dashboard:0.4.10'
-    implementation 'com.github.RR-9527:robot-code-v2:0.4.1'
 }
