@@ -17,14 +17,18 @@ public class RookieTeleOp extends LinearOpMode {
         DcMotor backLeftMotor = hardwareMap.dcMotor.get("BL");
         DcMotor frontRightMotor = hardwareMap.dcMotor.get("FR");
         DcMotor backRightMotor = hardwareMap.dcMotor.get("BR");
-        Intake intakeMotor = (Intake) hardwareMap.dcMotor.get("intake");
+        Intake intakeMotor = new Intake(hardwareMap);
 
         // Reverse the right side motors. This may be wrong for your setup.
         // If your robot moves backwards when commanded to go forwards,
         // reverse the left side instead.
         // See the note about this earlier on this page.
-        frontRightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
-        backRightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        frontRightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        backRightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        frontLeftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        backLeftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        frontLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        backLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
 
         waitForStart();
 
@@ -47,6 +51,12 @@ public class RookieTeleOp extends LinearOpMode {
             double backLeftPower = (y - x + rx) / denominator;
             double frontRightPower = (y - x - rx) / denominator;
             double backRightPower = (y + x - rx) / denominator;
+
+            frontLeftMotor.setPower(frontLeftPower);
+            backLeftMotor.setPower(backLeftPower);
+            frontRightMotor.setPower(frontRightPower);
+            backRightMotor.setPower(backRightPower);
+
             if(gamepad1.a) {
                 intakeOn=true;
                 extakeOn=false;
@@ -56,18 +66,13 @@ public class RookieTeleOp extends LinearOpMode {
                 intakeOn=false;
             }
 
-            frontLeftMotor.setPower(frontLeftPower);
-            backLeftMotor.setPower(backLeftPower);
-            frontRightMotor.setPower(frontRightPower);
-            backRightMotor.setPower(backRightPower);
-
-            if(intakeOn==true) {
+            if(intakeOn) {
                 intakeMotor.runIntake();
             }
             else {
                 intakeMotor.stop();
             }
-            if(extakeOn==true) {
+            if(extakeOn) {
                 intakeMotor.runExtake();
             }
             else {
