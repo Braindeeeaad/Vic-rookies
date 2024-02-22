@@ -1,6 +1,6 @@
 package Mechenism;
 
-import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.hardwareMap;
+import com.qualcomm.robotcore.hardware.DcMotorImplEx;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
