@@ -10,7 +10,6 @@ import Mechenism.Intake;
 
 @TeleOp
 public class RookieTeleOp extends LinearOpMode {
-    private DriveTrain dt;
     @Override
     public void runOpMode() throws InterruptedException {
         // Declare our motors
@@ -31,7 +30,6 @@ public class RookieTeleOp extends LinearOpMode {
             backLeftMotor.fieldDrive(gamepad1);
             boolean intakeOn = false;
             boolean extakeOn = false;
-
             if(gamepad1.x) {
                 intakeOn=true;
                 extakeOn=false;
